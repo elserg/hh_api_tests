@@ -1,0 +1,36 @@
+{
+    "description": "schema for vacancies request",
+    "type": "object",
+    "properties": {
+        "type": "object",
+        "found": {
+            "type": "integer"
+        },
+        "pages": {
+            "type": "integer"
+        },
+        "per_page": {
+            "type": "integer"
+        },
+        "page": {
+            "type": "integer"
+        },
+        "items": {
+            "type": "array"
+        },
+        "arguments": {
+            "format": "none"
+        },
+        "clusters": {
+            "format": "none"
+        },
+        "alternate_url": {
+            "type": "string"
+        },
+        "items": {
+            "type": "array"
+        }
+    },
+    "additionalProperties": false,
+    "required": ["found", "pages", "per_page", "page", "items", "arguments", "clusters", "alternate_url"]
+}

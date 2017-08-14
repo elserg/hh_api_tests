@@ -1,0 +1,52 @@
+{
+    "description": "schema for employers request",
+    "type": "object",
+    "properties": {
+        "type": "object",
+        "found": {
+            "type": "integer"
+        },
+        "pages": {
+            "type": "integer"
+        },
+        "per_page": {
+            "type": "integer"
+        },
+        "page": {
+            "type": "integer"
+        },
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "format": "myinteger"
+                    },
+                    "open_vacancies": {
+                        "type": "integer"
+                    },
+                    "vacancies_url": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "alternate_url": {
+                        "type": "string"
+                    },
+                    "logo_urls": {
+                        "type": "object"
+                    }
+                },
+                "additionalProperties": false,
+                "required": ["name", "id", "open_vacancies", "vacancies_url", "url", "alternate_url", "logo_urls"]
+            }
+        }   
+    },
+    "additionalProperties": false,
+    "required": ["found", "pages", "per_page", "page", "items"]
+}

@@ -1,0 +1,61 @@
+{
+    "description": "schema for areas request",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string"
+            },
+            "id": {
+                "format": "myinteger"
+            },
+            "parent_id": {
+                "format": "none"
+            },
+            "areas": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "format": "myinteger"
+                        },
+                        "parent_id": {
+                            "format": "myinteger"
+                        },
+                        "areas": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "id": {
+                                        "format": "myinteger"
+                                    },
+                                    "parent_id": {
+                                        "format": "myinteger"
+                                    },
+                                    "areas": {
+                                        "type": "array"
+                                    }
+                                },
+                                "additionalProperties": false,
+                                "required": ["name", "id", "parent_id", "areas"]
+                            }
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": ["name", "id", "parent_id", "areas"]
+                }
+            }
+        },
+        "additionalProperties": false,
+        "required": ["name", "id", "parent_id", "areas"]
+    }
+}
