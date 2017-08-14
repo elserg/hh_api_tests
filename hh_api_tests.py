@@ -87,7 +87,6 @@ class TestAreasMethod(unittest.TestCase):
                 break        
         new_cloud_tech = send_request(base_api_url + "/employers", data = {'text':'Новые Облачные Технологии', 'area':russia_id})
         new_cloud_tech_id = new_cloud_tech['items'][0]['id']
-        print(new_cloud_tech)
 
         resp = send_request(base_api_url + "/vacancies", data = {'text':'QA A​utomation Engineer', 'area':spb_id, 'employer_id':new_cloud_tech_id})
         validator = get_schema_validator('schema_vacancies.json')
