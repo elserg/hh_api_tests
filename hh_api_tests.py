@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import os
+import io
 import json
 import requests
 import unittest
 import jsonschema
+import HtmlTestRunner
 
 
 base_api_url = "https://api.hh.ru"
@@ -48,7 +50,7 @@ def get_id_by_country_name(name):
 
 
 
-class TestAreasMethod(unittest.TestCase):
+class TestRequests(unittest.TestCase):
 
     def test_areas_schema(self):
         # Запрос доступных стран /ar​eas
@@ -60,7 +62,7 @@ class TestAreasMethod(unittest.TestCase):
     def test_delete_areas(self):
         resp = send_delete(base_api_url + "/areas")
         self.assertEqual(resp, del_request)
-        
+
     def test_employers_schema(self):
 
         # Запрос поиск ​по компаниям с указанием региона поиска(Россия), по строке "Новые Облачные Технологии"
@@ -107,7 +109,18 @@ class TestAreasMethod(unittest.TestCase):
         resp = send_delete(base_api_url + "/vacancies", data = {'text':'QA A​utomation Engineer', 'area':spb_id, 'employer_id':new_cloud_tech_id})
         self.assertEqual(resp, del_request)
 
+class Test_HTMLTestRunner(unittest.TestCase):
+
+    def test_main(self):
+        self.suite = unittest.TestSuite()
+        self.suite.addTests([unittest.defaultTestLoader.loadTestsFromTestCase(TestRequests)])
+        buf = io.StringIO()
+
+        runner = HtmlTestRunner.HTMLTestRunner(
+                    stream=buf,
+                    output = 'test_logs'
+                    )
+        runner.run(self.suite)
 
 if __name__ == '__main__':
-    unittest.main()
-
+    unittest.main(defaultTest ='Test_HTMLTestRunner')
